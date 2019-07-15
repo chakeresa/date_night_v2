@@ -46,6 +46,10 @@ class BinarySearchTree
     end
   end
 
+  def sort
+    
+  end
+
   private
 
   def max_below(node_above)

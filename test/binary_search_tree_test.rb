@@ -77,4 +77,20 @@ class BinarySearchTreeTest < Minitest::Test
   def test_min_returns_nil_when_empty_tree
     assert_nil @tree.min
   end
+
+  def test_sort_returns_ary_of_hashes_sorted_lowest_to_highest_values_and_corresponding_data
+    @tree.insert(61, "Bill & Ted's Excellent Adventure")
+    @tree.insert(16, "Johnny English")
+    @tree.insert(92, "Sharknado 3")
+    @tree.insert(50, "Hannibal Buress: Animal Furnace")
+
+    expected = [
+      {"Johnny English" => 16},
+      {"Hannibal Buress: Animal Furnace" => 50},
+      {"Bill & Ted's Excellent Adventure" => 61},
+      {"Sharknado 3" => 92}
+    ]
+
+    assert_equal expected, @tree.sort
+  end
 end
