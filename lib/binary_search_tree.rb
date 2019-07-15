@@ -24,7 +24,24 @@ class BinarySearchTree
     end
   end
 
+  def depth_of(value)
+    return nil if !include?(value)
+
+    get_level_below(@root, value)
+  end
+
   private
+
+  def get_level_below(node_above, value)
+    value_above = node_above.value
+    return node_above.level if value_above == value
+
+    if value < value_above
+      get_level_below(node_above.left, value)
+    else
+      get_level_below(node_above.right, value)
+    end
+  end
 
   def insert_below(node_above, value, data)
     if value < node_above.value
