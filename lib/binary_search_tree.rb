@@ -47,10 +47,25 @@ class BinarySearchTree
   end
 
   def sort
-    
+    accum = []
+    if @root
+      accum, min_node = add_minimum(accum, @root)
+      # go to the parent of the minimum, shovel its hash into accum
+      # go to the right of the parent (if there), and repeat the process
+    end
+    accum
   end
 
   private
+
+  def add_minimum(accum, node_above)
+    if node_above.left
+      add_minimum(accum, node_above.left)
+    else
+      accum << {node_above.data => node_above.value}
+      [accum, node_above]
+    end
+  end
 
   def max_below(node_above)
     if node_above.right
