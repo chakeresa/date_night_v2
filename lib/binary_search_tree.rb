@@ -1,3 +1,5 @@
+require './lib/node'
+
 class BinarySearchTree
   attr_reader :root
 
