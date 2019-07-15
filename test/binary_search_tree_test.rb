@@ -26,4 +26,14 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 2, @tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert_equal 50, @tree.root.left.right.value
   end
+
+  def test_it_returns_true_or_false_if_value_is_included
+    @tree.insert(61, "Bill & Ted's Excellent Adventure")
+    @tree.insert(16, "Johnny English")
+    @tree.insert(92, "Sharknado 3")
+    @tree.insert(50, "Hannibal Buress: Animal Furnace")
+
+    assert_equal true, @tree.include?(16)
+    assert_equal false, @tree.include?(72)
+  end
 end

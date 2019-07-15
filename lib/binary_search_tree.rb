@@ -16,6 +16,14 @@ class BinarySearchTree
     end
   end
 
+  def include?(value)
+    if @root.nil? 
+      false
+    else
+      search_below(@root, value)
+    end
+  end
+
   private
 
   def insert_below(node_above, value, data)
@@ -45,6 +53,16 @@ class BinarySearchTree
       level
     else
       insert_below(right_node, value, data)
+    end
+  end
+
+  def search_below(node_above, value)
+    return true if node_above.value == value
+
+    if value < node_above.value
+      node_above.left ? search_below(node_above.left, value) : false
+    else
+      node_above.right ? search_below(node_above.right, value) : false
     end
   end
 end
