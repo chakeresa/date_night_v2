@@ -49,22 +49,18 @@ class BinarySearchTree
   def sort
     accum = []
     if @root
-      accum, min_node = add_minimum(accum, @root)
-      # go to the parent of the minimum, shovel its hash into accum
-      # go to the right of the parent (if there), and repeat the process
+      build_sorted_ary(@root, accum)
     end
-    accum
   end
 
   private
 
-  def add_minimum(accum, node_above)
-    if node_above.left
-      add_minimum(accum, node_above.left)
-    else
-      accum << {node_above.data => node_above.value}
-      [accum, node_above]
-    end
+  def build_sorted_ary(node_above, accum)
+    return accum if !node_above
+
+    build_sorted_ary(node_above.left, accum)
+    accum << {node_above.data => node_above.value}
+    build_sorted_ary(node_above.right, accum)
   end
 
   def max_below(node_above)
