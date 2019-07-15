@@ -1,9 +1,11 @@
 class Node
   attr_reader :value,
-              :data
-              
-  def initialize(value, data)
+              :data,
+              :level
+
+  def initialize(value, data, level)
     @value = value
     @data = data
+    @level = level
   end
 end

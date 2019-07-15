@@ -9,7 +9,7 @@ class BinarySearchTree
 
   def insert(value, data)
     if @root.nil? 
-      @root = Node.new(value, data)
+      @root = Node.new(value, data, 0)
       0
     else
       insert_below(@root, value, data)
