@@ -30,7 +30,23 @@ class BinarySearchTree
     get_level_below(@root, value)
   end
 
+  def max
+    if @root.nil? 
+      nil
+    else
+      max_below(@root)
+    end
+  end
+
   private
+
+  def max_below(node_above)
+    if node_above.right
+      max_below(node_above.right)
+    else
+      {node_above.data => node_above.value}
+    end
+  end
 
   def get_level_below(node_above, value)
     value_above = node_above.value

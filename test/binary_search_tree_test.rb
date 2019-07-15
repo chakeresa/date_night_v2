@@ -47,4 +47,19 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 2, @tree.depth_of(50)
     assert_nil @tree.depth_of(99)
   end
+
+  def test_max_returns_hash_with_max_value_and_corresponding_data
+    @tree.insert(61, "Bill & Ted's Excellent Adventure")
+    @tree.insert(16, "Johnny English")
+    @tree.insert(92, "Sharknado 3")
+    @tree.insert(50, "Hannibal Buress: Animal Furnace")
+
+    expected = {"Sharknado 3" => 92}
+
+    assert_equal expected, @tree.max
+  end
+
+  def test_max_returns_nil_when_empty_tree
+    assert_nil @tree.max
+  end
 end
