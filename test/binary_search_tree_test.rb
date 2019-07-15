@@ -62,4 +62,19 @@ class BinarySearchTreeTest < Minitest::Test
   def test_max_returns_nil_when_empty_tree
     assert_nil @tree.max
   end
+
+  def test_min_returns_hash_with_min_value_and_corresponding_data
+    @tree.insert(61, "Bill & Ted's Excellent Adventure")
+    @tree.insert(16, "Johnny English")
+    @tree.insert(92, "Sharknado 3")
+    @tree.insert(50, "Hannibal Buress: Animal Furnace")
+
+    expected = {"Johnny English" => 16}
+
+    assert_equal expected, @tree.min
+  end
+
+  def test_min_returns_nil_when_empty_tree
+    assert_nil @tree.min
+  end
 end

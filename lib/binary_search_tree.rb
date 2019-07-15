@@ -38,11 +38,27 @@ class BinarySearchTree
     end
   end
 
+  def min
+    if @root.nil? 
+      nil
+    else
+      min_below(@root)
+    end
+  end
+
   private
 
   def max_below(node_above)
     if node_above.right
       max_below(node_above.right)
+    else
+      {node_above.data => node_above.value}
+    end
+  end
+
+  def min_below(node_above)
+    if node_above.left
+      min_below(node_above.left)
     else
       {node_above.data => node_above.value}
     end
